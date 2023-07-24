@@ -17,6 +17,10 @@ public class Member {
 
     private String name;
 
+    private String email;
+
+    private String password;
+
     @OneToMany(mappedBy = "member")
     private List<Rate> ratings = new ArrayList<>();
 

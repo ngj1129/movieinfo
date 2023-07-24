@@ -2,6 +2,7 @@ package hongikmovie.movieinfo.repository;
 
 import hongikmovie.movieinfo.domain.Member;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,16 @@ public class MemberRepository {
     public void save(Member member) { em.persist(member); }
 
     public Member findOne(Long id) { return em.find(Member.class, id); }
+
+    public Member findByEmail(String email) {
+        try {
+            return em.createQuery("select m from Member m where m.email = :email", Member.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 
     public List<Member> findAll() {
         return em.createQuery
