@@ -1,5 +1,8 @@
 package hongikmovie.movieinfo.service;
 
+import hongikmovie.movieinfo.domain.Member;
+import hongikmovie.movieinfo.domain.Movie;
+import hongikmovie.movieinfo.domain.Rate;
 import hongikmovie.movieinfo.domain.Theater;
 import hongikmovie.movieinfo.repository.TheaterRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,4 +24,8 @@ public class TheaterService {
     public List<Theater> findTheaters() { return theaterRepository.findAll(); }
 
     public Theater findOne(Long theaterId) { return theaterRepository.findOne(theaterId); }
+
+    public List<Theater> findTheaters(Movie movie) {
+        return theaterRepository.findByMovie(movie);
+    }
 }

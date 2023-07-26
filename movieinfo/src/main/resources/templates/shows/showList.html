@@ -9,18 +9,18 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>회원명</th>
                 <th>영화</th>
-                <th>평점</th>
+                <th>상영관</th>
+                <th>상영 시간</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="rating : ${ratings}">
-                <td th:text="${rating.id}"></td>
-                <td th:text="${rating.member.name}"></td>
-                <td th:text="${rating.movie.name}"></td>
-                <td th:text="${rating.score}"></td>
+            <tr th:each="show : ${shows}">
+                <td th:text="${show.id}"></td>
+                <td th:text="${show.movie.name}"></td>
+                <td th:text="${show.theater.name}"></td>
+                <td th:text="${show.showTime}"></td>
             </tr>
             </tbody>
         </table>

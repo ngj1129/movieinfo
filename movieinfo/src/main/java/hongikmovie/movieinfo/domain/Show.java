@@ -11,13 +11,14 @@ import java.time.LocalDateTime;
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
+@Table(name = "shows")
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Show {
 
     @Id
     @GeneratedValue
-    @Column(name = "show_id")
+    @Column(name = "shows_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)

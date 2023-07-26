@@ -4,7 +4,7 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form role="form" action="/rate" method="post">
+    <form role="form" action="/shows/new" method="post">
         <div class="form-group">
             <label for="movie">영화</label>
             <select name="movieId" id="movie" class="form-control">
@@ -15,9 +15,18 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="score">평점</label>
-            <input type="text" name="score" class="form-control" id="score"
-                   placeholder="평점을 입력하세요">
+            <label for="theater">상영관</label>
+            <select name="theaterId" id="theater" class="form-control">
+                <option value="">영화선택</option>
+                <option th:each="theater : ${theaters}"
+                        th:value="${theater.id}"
+                        th:text="${theater.name}" />
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="showTime">상영 시간</label>
+            <input type="datetime-local" name="showTime" class="form-control" id="showTime"
+                   placeholder="상영 시간을 입력하세요">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

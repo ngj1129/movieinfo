@@ -1,5 +1,8 @@
 package hongikmovie.movieinfo.repository;
 
+import hongikmovie.movieinfo.domain.Member;
+import hongikmovie.movieinfo.domain.Movie;
+import hongikmovie.movieinfo.domain.Rate;
 import hongikmovie.movieinfo.domain.Theater;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +29,13 @@ public class TheaterRepository {
     public List<Theater> findAll() {
         return em.createQuery
                         ("select t from Theater t", Theater.class)
+                .getResultList();
+    }
+
+    public List<Theater> findByMovie(Movie movie) {
+        return em.createQuery
+                        ("select t from theater t where t.movie = :movie", Theater.class)
+                .setParameter("movie", movie)
                 .getResultList();
     }
 }

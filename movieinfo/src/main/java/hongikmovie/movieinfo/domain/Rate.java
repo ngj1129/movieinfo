@@ -27,7 +27,7 @@ public class Rate {
     private Movie movie;
 
     @Enumerated(EnumType.STRING)
-    private RateStatus status;
+    private RateStatus status = RateStatus.NOTRATED;
 
     private float score;
 
